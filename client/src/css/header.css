@@ -1,0 +1,81 @@
+/* TOP WHITE BAR */
+.top-header {
+  background: #ffffff;
+  padding: 10px 40px;
+  display: flex;
+  align-items: center;
+}
+
+/* LOGO */
+.logo-box {
+  display: flex;
+  gap: 6px;
+}
+
+.logo {
+  background: #b3001b; /* Kashmiri red */
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* RED NAVBAR */
+.navbar {
+  background: linear-gradient(to right, #fff, #b3001b);
+  padding: 12px 0;
+  justify-content: center;
+}
+
+/* NAV LINKS */
+.nav-links {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  color: #000000;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  position: relative;
+}
+
+.nav-links a {
+  color: #000000;
+  text-decoration: auto;
+}
+/* SEPARATOR "|" */
+.nav-links li::after {
+  content: "|";
+  margin-left: 20px;
+  color: #ffffff;
+}
+
+.nav-links li:last-child::after {
+  content: "";
+}
+
+/* HOVER EFFECT */
+.nav-links li:hover {
+  text-decoration: underline;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+}
+.logo-text {
+  font-family: 'slick'; /* optional fancy font */
+  font-weight: bold;
+  font-size: 32px;
+  color: #b3001b; /* WhatsApp green if you like */
+}

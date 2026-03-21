@@ -1,0 +1,113 @@
+.footer {
+  background: #b3001b; /* Kashmiri mirch red */
+  color: #ffffff;
+  padding: 50px 40px;
+  font-family: Arial, sans-serif;
+}
+
+/* Layout */
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* LEFT SECTION */
+.footer-left {
+  max-width: 320px;
+}
+
+/* LOGO STYLE */
+.logo-box {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.logo {
+  background: #ffffff;
+  color: #b3001b;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* TEXT */
+.head-office {
+  margin-bottom: 5px;
+}
+
+.address {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* SOCIAL ICONS */
+.social-icons {
+  margin: 15px 0;
+}
+
+.social-icons i {
+  margin-right: 12px;
+  font-size: 16px;
+  background: #ffffff;
+  color: #b3001b;
+  border-radius: 20%;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.social-icons i:hover {
+  background: #ffffff;
+  color: black;
+  transform: scale(1.1);
+}
+
+/* EMAIL + PHONE */
+.email {
+  font-size: 18px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.phone {
+  font-size: 14px;
+}
+
+/* LINKS */
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* HOVER EFFECT */
+.footer-links li:hover {
+  color: #ffd6d6; /* light red */
+  transform: translateX(5px);
+}
+
+.footer-links a {
+  color: #ffd6d6;
+  text-decoration: auto;
+}
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+.logo-footer-text {
+  font-family: 'slick'; /* optional fancy font */
+  font-weight: bold;
+  font-size: 32px;
+  color: #ffd6d6; /* WhatsApp green if you like */
+}
