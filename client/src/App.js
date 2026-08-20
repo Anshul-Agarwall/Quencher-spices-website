@@ -1,9 +1,11 @@
 // import React, { useState } from 'react';
 // import axios from 'axios';
 import { Route, Routes} from 'react-router-dom';
+import { CartProvider } from './CartContext';
 // import ContactForm from './components/ContactForm';
 // import LoginForm from './components/Login';
 import ShoppingPage from "./components/Shoppingpage";
+import Cart from "./Cart";
 
 
 function App() { 
@@ -37,11 +39,14 @@ function App() {
   // }
 
 return (
-    <Routes>
-      {/* <Route path="/" element={<LoginForm onLogin={handleLogin} />} />
-      <Route path="/contact" element={<ContactForm email={email} />} /> */}
-      <Route path="/" element={<ShoppingPage/>} />
-    </Routes>
+    <CartProvider>
+      <Routes>
+        {/* <Route path="/" element={<LoginForm onLogin={handleLogin} />} />
+        <Route path="/contact" element={<ContactForm email={email} />} /> */}
+        <Route path="/" element={<ShoppingPage/>} />
+        <Route path="/cart" element={<Cart/>} />
+      </Routes>
+    </CartProvider>
 );
 
 }
