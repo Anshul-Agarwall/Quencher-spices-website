@@ -23,7 +23,7 @@
 
 /* RED NAVBAR */
 .navbar {
-  background: linear-gradient(to right, #fff, #b3001b);
+  /* background: linear-gradient(to right, #fff, #b3001b); */
   padding: 12px 0;
   justify-content: center;
 }
@@ -68,14 +68,159 @@
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  .nav-links {
-    flex-wrap: wrap;
-    gap: 15px;
-  }
+   nav.navbar ul.nav-links {
+        gap: 2px !important;
+    }
+    .nav-links a {
+        font-size: 0.8rem !important;
+    }
 }
 .logo-text {
   font-family: 'slick'; /* optional fancy font */
   font-weight: bold;
   font-size: 32px;
   color: #b3001b; /* WhatsApp green if you like */
+}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 5px 10px;
+  transition: all 0.3s ease; /* smooth transition */
+}
+
+header.default {
+  background-color: transparent;
+  color: black; /* default text color */
+  border-bottom: none;
+}
+
+header.scrolled {
+  background-color: black;
+  /* background: linear-gradient(to right, #fff, #b3001b); */
+  color: white; /* text color when scrolled */
+  border-bottom: 2px solid #fff; /* optional white border */
+}
+
+header.default {
+  display: flex;
+  align-items: center;      /* Vertically centers items */
+  justify-content: center; /* Puts space between logo and nav */
+  padding: 0 20px;          /* Optional: some horizontal padding */
+}
+
+header.default img {
+  width: 200px;
+  height: 100px;
+}
+
+nav.navbar ul.nav-links {
+  display: flex;            /* Makes the ul a horizontal flex container */
+  gap: 20px;                /* Adds space between the nav items */
+  margin: 0;
+  padding: 0;
+  list-style: none;         /* Removes default bullets */
+}
+
+nav.navbar ul.nav-links li {
+  display: inline;          /* Optional: keep li inline if needed */
+}
+
+/* default text */
+.header.default .nav-links a {
+  color: black;
+}
+
+/* when scrolled */
+.header.scrolled .nav-links a {
+  /* color: white; */
+    color: white;
+}
+
+/* separator fix */
+.header.scrolled .nav-links li::after {
+  color: white;
+}
+
+/* FIXED CENTER BANNER */
+.floating-banner {
+    position: fixed;
+    top: 92%;
+    color: black;
+    background:linear-gradient(to right, #fff, #000000);
+    padding: 5px 5px;
+    z-index: 9999;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    width: stretch;
+    font-weight: bold;
+}
+
+/* SCROLLING TEXT */
+.scroll-text {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scrollText 10s linear infinite;
+}
+
+/* ANIMATION */
+@keyframes scrollText {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.whatsapp-link{
+    color: #25D366;
+    font-size: 15px;
+}
+
+/* Cart Icon Styles */
+.cart-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.cart-link:hover {
+  transform: scale(1.1);
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #dc3545;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  animation: badgePop 0.3s ease;
+}
+
+@keyframes badgePop {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

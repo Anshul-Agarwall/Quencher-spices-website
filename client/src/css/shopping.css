@@ -8,7 +8,7 @@
   display: flex;
   overflow-x: auto;
   scroll-behavior: smooth;
-  gap: 16px;
+  gap: 100px;
   padding: 10px;
 }
 
@@ -44,7 +44,7 @@
 
 .about-us-section{
     /* background-color: #2F3792; */
-    background: linear-gradient(to right, #fff, #b3001b);
+    background: linear-gradient(to right, #fff, #ffe826);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -83,7 +83,7 @@
 .homeSlider .eachImage {
   position: relative;
   width: 100%;
-  height: 400px; /* Adjust as needed */
+  height: 750px; /* Adjust as needed */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -140,9 +140,6 @@
   background: #ccc;
 }
 
-.slick-dots li.slick-active button {
-  background: #ff6600;
-}
 .product-card img {
   transition: transform 0.4s ease;
 }
@@ -246,4 +243,169 @@ h1.titleH2, .titleH2 {
 
   background-repeat: no-repeat;
   background-size: 100% 15%, 100% 15%, 15% 100%, 15% 100%;
+}
+
+.product-name{
+  justify-content: center;
+  display: flex;
+  font-size: 1.0rem;
+}
+
+.product-info {
+  padding: 12px 8px;
+  background: white;
+  text-align: center;
+}
+
+.product-price {
+  color: #2ecc71;
+  font-weight: 600;
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+.product-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.qty-input-group {
+  flex: 0 0 auto;
+}
+
+.qty-input {
+  width: 50px;
+  padding: 6px 4px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.add-to-cart-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.add-to-cart-btn.added {
+  background-color: #28a745;
+}
+
+.custom-slider .slick-dots li button:before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  display: block;
+}
+
+.custom-slider .slick-dots li.slick-active button:before {
+  background: white;
+  height: 20px;
+  border-radius: 10px;
+}
+
+.custom-slider .slick-dots {
+  justify-content: center;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: auto;
+  display: flex !important;
+  flex-direction: column; /* vertical dots */
+  gap: 10px;
+}
+
+/* make dots vertical */
+.custom-slider .slick-dots li {
+  margin: 0;
+}
+
+/* optional: style dots */
+.custom-slider .slick-dots li button:before {
+  font-size: 10px;
+  color: white;
+}
+
+
+@media (max-width: 768px) {
+
+  .homeSlider .eachImage {
+    height: 200px;   /* smaller banner height */
+  }
+
+  .homeSlider .eachImage img {
+    object-fit: cover;
+  }
+
+  .search-bar {
+    width: 80px;
+    right: 10px;
+    font-size: 0.4rem;
+    height: 20px;
+  }
+
+  .carousel-container {
+    gap: 0px !important;
+    padding: 5px;
+  }
+
+  .product-name {
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .product-card {
+    width: 100px;
+  }
+
+  .product-card img {
+    width: 100%;
+    height: 100px !important;      /* smaller image */
+    object-fit: contain !important; /* full image visible */
+  }
+  .titleH2 {
+    font-size: 0.8rem;
+  }
+
+  .eachpara p {
+    font-size: 0.4rem;
+    line-height: 1.4;
+    min-height: 50px !important;
+  }
+  .eachpara {
+    min-height: 50px !important;
+  }
+
+  #products button{
+    font-size: 0.3rem;
+  }
+  .about-us-section p,
+  .about-us-section ul, 
+  .about-us-section li{
+      font-size: 0.4rem;
+      font-weight: 400;
+      line-height: 5px;
+  }
+  .about-us-section h3 u{
+    font-size: 0.8rem;
+  }
 }

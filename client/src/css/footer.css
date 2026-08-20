@@ -1,5 +1,5 @@
 .footer {
-  background: #b3001b; /* Kashmiri mirch red */
+  background: black; /* Kashmiri mirch red */
   color: #ffffff;
   padding: 50px 40px;
   font-family: Arial, sans-serif;
@@ -26,7 +26,7 @@
 
 .logo {
   background: #ffffff;
-  color: #b3001b;
+  color: white;
   padding: 8px 14px;
   border-radius: 6px;
   font-weight: bold;
@@ -52,7 +52,7 @@
   margin-right: 12px;
   font-size: 16px;
   background: #ffffff;
-  color: #b3001b;
+  color: black;
   border-radius: 20%;
   transition: 0.3s;
   cursor: pointer;
@@ -60,8 +60,14 @@
 
 .social-icons i:hover {
   background: #ffffff;
-  color: black;
+  color: red;
   transform: scale(1.1);
+}
+.social-icons .fa-linkedin:hover {
+  color: blue;
+}
+.social-icons .fa-facebook-f:hover {
+  color: blue;
 }
 
 /* EMAIL + PHONE */
@@ -95,7 +101,7 @@
 }
 
 .footer-links a {
-  color: #ffd6d6;
+  color: white;
   text-decoration: auto;
 }
 /* RESPONSIVE */
@@ -103,6 +109,15 @@
   .footer-container {
     flex-direction: column;
     gap: 30px;
+  }
+  .footer-container p {
+    font-size: 0.8rem;
+  }
+  .footer-links a li {
+    font-size: 0.8rem;
+  }
+   .footer-links li {
+    font-size: 0.8rem;
   }
 }
 .logo-footer-text {
