@@ -2,19 +2,18 @@
 import React, { useState,useRef } from "react";
 import products from "../data/product";
 import Slider from "react-slick";
-// import { FaShoppingCart } from "react-icons/fa";
+import { useCart } from "../CartContext";
 import "../css/shopping.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Footer from "./Footer";
+import Middle from "./Middle";
 import Header from "./Header";
 
 function Shopping() {
-  const [cartCount, setCartCount] = useState(0);
-
-  const handleAddToCart = () => {
-    setCartCount(cartCount + 1);
-  };
+  const { addToCart } = useCart();
+  const [addedProducts, setAddedProducts] = useState({});
+  const [quantities, setQuantities] = useState({});
   const carouselRef = useRef(null);
 
 const scrollLeft = () => {
@@ -22,19 +21,19 @@ const scrollLeft = () => {
 };
  const banners = [
     {
-      img: require("../images/spices/banner1.jpg"),
+      img: require("../images/spices/abcd.png"),
       link: "/collections/dates",
     },
     {
-      img: require("../images/spices/banner2.jpg"),
+      img: require("../images/spices/abc3.png"),
       link: "/collections/nuts",
     },
     {
-      img: require("../images/spices/banner3.jpg"),
+      img: require("../images/spices/banner2.jpg"),
       link: "/collections/dry-fruits",
     },
     {
-      img: require("../images/spices/banner4.jpg"),
+      img: require("../images/spices/banner3.png"),
       link: "/collections/diwali-products",
     },
   ];
@@ -49,27 +48,42 @@ const filteredProducts = products.filter((p) =>
   p.name.toLowerCase().includes(searchTerm.toLowerCase())
 );
 
+const handleAddToCart = (product) => {
+  const quantity = quantities[product.id] || 1;
+  addToCart(product, quantity);
+  setAddedProducts({ ...addedProducts, [product.id]: true });
+  
+  setTimeout(() => {
+    setAddedProducts({ ...addedProducts, [product.id]: false });
+  }, 2000);
+};
+
+const handleQuantityChange = (productId, value) => {
+  const qty = Math.max(1, parseInt(value) || 1);
+  setQuantities({ ...quantities, [productId]: qty });
+};
+
 
 const customerreviews = [
     {
-        para: "It is the best sweet shop as the name standard it surely lives upto it's name one must really try their sweet products"
+        para: "The aroma and freshness of Quencher spices are unmatched. Their Red Chilli Powder adds the perfect color and taste to our food."
     },
     {
-        para: "Packaging at its best best place to buy quality sweets and delicious sweets all the best time to the whole team"
+        para: "We’ve tried many spice brands, but Quencher stands out for its consistent quality and authentic flavor."
     },
     {
-        para: "I love sweets here all must try here it's very impressive that we can get our home food where ever we want"
+        para: "Their Garam Masala has become a must-have in our kitchen. Pure taste with rich aroma in every spoon."
     },
     {
-        para: "For the quality definitely needs a good rating and review thats why came here .. very delicious whole family enjoied it.. think how it would be after 2 to 3 days but very well packed and came safely ??packaging needs a special appreciation??"
+        para: "Excellent packaging, premium quality, and great customer support. Highly recommended for retailers and wholesalers."
     },
     {
-        para: "It is the best sweet shop as the name standard it surely lives upto it's name one must really try their sweet products"
+        para: "Quencher truly delivers what they promise — pure spices with traditional Indian taste."
     }
 ];
 
 const sliderSettings = {
-    dots: false,
+    dots: true,
     infinite: true,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -85,7 +99,7 @@ return (
    {/* ✅ Slider Section */}
       <div className="homeBanner show">
         <div className="homeSlider">
-          <Slider {...sliderSettings}>
+          <Slider {...sliderSettings} className="custom-slider">
             {banners.map((b, i) => (
               <div key={i} className="eachImage">
                 <img src={b.img} alt={`banner-${i}`} />
@@ -115,32 +129,46 @@ return (
 
     <div className="carousel-container flex-grow-1" ref={carouselRef}>
       {filteredProducts.map((product) => (
-        <div className="card product-card" key={product.id}>
+        <div className="product-card" key={product.id}>
           <img
             src={product.image}
             alt={product.name}
             style={{
               width: "100%",
-              height: "120px",
+              height: "400px",
               objectFit: "cover"
             }}
           />
-          <div className="card-body p-2 d-flex flex-column"   style={{ height: "100%" }}>
-            <h6 className="card-title mb-1" style={{ fontSize: "0.9rem" }}>
+          <div className="product-info">
+            <h6 className="product-name">
               {product.name}
             </h6>
-            <p className="card-text mb-1" style={{ fontSize: "0.8rem" }}>
-              {product.description}
-            </p>
-            <div className="d-flex justify-content-between align-items-center mt-auto">
-              <span className="text-success" style={{ fontSize: "0.85rem" }}>
-                ₹{product.price}
-              </span>
+            <p className="product-price">₹{product.price}</p>
+            
+            <div className="product-controls">
+              <div className="qty-input-group">
+                <input
+                  type="number"
+                  min="1"
+                  value={quantities[product.id] || 1}
+                  onChange={(e) => handleQuantityChange(product.id, e.target.value)}
+                  className="qty-input"
+                  placeholder="Qty"
+                />
+              </div>
               <button
-                className="btn btn-sm btn-primary"
-                onClick={handleAddToCart}
+                className={`btn btn-sm add-to-cart-btn ${addedProducts[product.id] ? 'added' : ''}`}
+                onClick={() => handleAddToCart(product)}
               >
-                Add
+                {addedProducts[product.id] ? (
+                  <>
+                    <i className="fas fa-check"></i> Added
+                  </>
+                ) : (
+                  <>
+                    <i className="fas fa-shopping-cart"></i> Add
+                  </>
+                )}
               </button>
             </div>
           </div>
@@ -152,7 +180,7 @@ return (
       <i className="fas fa-chevron-right"></i>
     </button>
       </div>
-
+<Middle />
     {/* About Us Section */}
 <div id="about-us" className="container-fluid about-us-section mt-5 p-4">
   <h3><u>About Us — Quencher:-</u></h3>
@@ -164,16 +192,22 @@ return (
     to make high-quality, ethically sourced spices accessible to every home cook, chef, and food lover.  
     Today, we proudly serve a community that shares our love for taste that tells a story.
     <br/>
-   What We Believe In
-   <br/></p>
+   We offer a wide range of products including Red Chilli Powder, Kashmiri Lal Mirch, Garam Masala, Turmeric, Coriander, Chai Spice Blends, and many more — all prepared to enhance the aroma, color, and flavor of your food.
+   <br/>
+   </p>
+   <p>At Quencher™, we believe every spice has a story to tell —</p>
+   <p><b>“Har Masale Ki Ek Kahani.”</b></p><br/>
+   <p><b>Why Choose Us?</b></p>
     <ul>
-        <li><b>Purity & Quality:</b> Our spices are handpicked, sun-dried, and ground to perfection — with no additives or fillers.</li>
-        <li><b>Sustainability:</b> We work directly with farmers and cooperatives to ensure fair trade and sustainable sourcing.</li>
-        <li><b>Freshness Guaranteed:</b> From harvest to your plate, we preserve the natural aroma and richness of every spice.</li>
+        <li><b>Premium Quality Spices</b></li>
+        <li><b>Hygienically Processed & Packed</b></li>
+        <li><b>Authentic Indian Flavors</b></li>
+        <li><b>Trusted Sourcing Network</b></li>
+        <li><b>Customer-Centric Approach</b></li>
     </ul>
+    <br/>
     <p>
-    Whether you're spicing up a weekday dinner or creating a culinary masterpiece, our spices bring out the best in your food.  
-    We believe that great flavor should be honest, vibrant, and unforgettable — just like the stories shared over a good meal.
+    Whether you are a home cook, retailer, wholesaler, or distributor, Quencher™ Spice & Beverage is committed to delivering products that combine tradition, purity, and taste in every pinch.
     </p>
 </div>
          <div className="homeSlider">
@@ -189,7 +223,7 @@ return (
         </div>
       </div>
   <a
-  href="https://wa.me/918077416294"
+  href="https://wa.me/919759710427"
   target="_blank"
   title="Click to open WhatsApp chat"
   rel="noopener noreferrer"

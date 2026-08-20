@@ -1,6 +1,6 @@
-import React from "react";
+// import React from "react";
 import "../css/footer.css";
-import Logo from "../images/spices/logo.png";
+// import Logo from "../images/spices/logo.png";
 
 function Footer() {
   return (
@@ -8,29 +8,42 @@ function Footer() {
       <div className="footer-container">
 
         {/* LEFT */}
-        <div className="footer-left">
-            <img src={Logo}
+         <div className="footer-left">
+          {/*  <img src={Logo}
             style={{ width: '200px', height: '100px'}} 
-            />
+            /> */}
          {/* <span class="logo-footer-text">QUENCHER</span>
          <i className="fas fa-pepper-hot" style={{ color: '#ffd6d6' }}></i> */}
 
           <p className="head-office">
-            <i className="fas fa-map-marker-alt"></i> <b>Head Office:</b>
+            <i className="fas fa-map-marker-alt"></i> <b>Headquarters:</b>
           </p>
 
           <p className="address">
-            111, Phase-I, Ambedkar Colony, Nagina 246762 <br />
-            QUENCHER PVT Lmt.
+            187/188, Govind plaza, Vrindavan Marg, near Petrol Pump, Mathura, Uttar Pradesh 281001, INDIA
           </p>
 
           {/* Social Icons */}
           <div className="social-icons">
             <i className="fab fa-youtube"></i>
-            <i className="fab fa-instagram"></i>
-            <i className="fab fa-facebook-f"></i>
-            <i className="fab fa-whatsapp"></i>
-             <a
+            <a
+                href="https://instagram.com/quencher_spice"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <i className="fab fa-instagram"></i>
+            </a>
+            <a
+                href="https://www.facebook.com/share/18ULyW1HmC/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <i className="fab fa-facebook-f"></i>
+            </a>
+            {/* <i className="fab fa-instagram"></i> */}
+            {/* <i className="fab fa-facebook-f"></i> */}
+            {/* <i className="fab fa-whatsapp"></i> */}
+            <a
                 href="https://www.linkedin.com/company/quencher-spice-and-beverage/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -51,7 +64,7 @@ function Footer() {
                 <li><a href="/">Home</a></li>
                 <li><a href="#about-us">About Us</a></li>
                 <li><a href="#products">Products</a></li>
-                <li><a href="/recipes">Recipes</a></li>
+                {/* <li><a href="/recipes">Recipes</a></li> */}
                 <li><a href="#contact">Contact Us</a></li>
             </ul>
         </div>
